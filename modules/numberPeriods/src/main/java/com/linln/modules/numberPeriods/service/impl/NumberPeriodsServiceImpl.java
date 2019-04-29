@@ -88,7 +88,7 @@ public class NumberPeriodsServiceImpl implements NumberPeriodsService {
 	 */
 	@Override
 	public NumberPeriods getNumberPeriodsByRidAnNname(Long rId, String nName) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return numberPeriodsRepository.getNumberPeriodsByRidAnNname(rId, nName);
 	}
 }
