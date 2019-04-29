@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Implementation-Title: 公共模块
 Implementation-Version: 2.0.1
+Built-By: Administrator
 Implementation-Vendor-Id: com.linln
-Build-Jdk: 1.7.0_79
-Built-By: zizige
-Created-By: Maven Integration for Eclipse
+Build-Jdk: 1.8.0_31
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/timo/common
+Created-By: Maven Integration for Eclipse
 

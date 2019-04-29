@@ -16,5 +16,9 @@
 
     <modules>
         <module>system</module>
+        <module>lowerEquipment</module>
+        <module>residentialQuarters</module>
+        <module>numberPeriods</module>
+        
     </modules>
 </project>

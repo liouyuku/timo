@@ -51,6 +51,22 @@
             <artifactId>fileUpload</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.linln.modules</groupId>
+            <artifactId>lowerEquipment</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.linln.modules</groupId>
+            <artifactId>residentialQuarters</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.linln.modules</groupId>
+            <artifactId>numberPeriods</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
     </dependencies>
 
     <build>

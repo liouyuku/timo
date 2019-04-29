@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="layui-form timo-compile">
+    <form th:action="@{/numberPeriods/numberPeriods/add}">
+        <input type="hidden" name="id" th:if="${numberPeriods}" th:value="${numberPeriods.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">期数名称</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="name" placeholder="请输入期数名称" th:value="${numberPeriods?.name}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">小区id</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="residentialQuartersId" placeholder="请输入小区id" th:value="${numberPeriods?.residentialQuartersId}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">期数编号</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="numberOfPeriodsNumber" placeholder="请输入期数编号" th:value="${numberPeriods?.numberOfPeriodsNumber}">
+            </div>
+        </div>
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>
