@@ -17,6 +17,6 @@ public class StatusConst {
 	// 编号重复
 	public static final String DUPLICATE_NUMBER = "编号重复";
 	//小区的期数名字不能重复
-	public static final String PERIOD_NAMES_NO_REPEATED = "编号重复";
+	public static final String PERIOD_NAMES_NO_REPEATED = "期数名称重复";
 
 }
