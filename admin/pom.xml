@@ -26,6 +26,12 @@
             <artifactId>devtools</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!--  接口模块 -->
+        <dependency>
+            <groupId>com.linln</groupId>
+            <artifactId>api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.linln.modules</groupId>
             <artifactId>system</artifactId>
