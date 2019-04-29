@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: 开发中心模块
+Implementation-Version: 2.0.1
+Implementation-Vendor-Id: com.linln
+Build-Jdk: 1.7.0_79
+Built-By: zizige
+Created-By: Maven Integration for Eclipse
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/timo/devtools
+
