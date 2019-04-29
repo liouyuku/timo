@@ -21,57 +21,74 @@ import java.util.List;
 @Service
 public class NumberPeriodsServiceImpl implements NumberPeriodsService {
 
-    @Autowired
-    private NumberPeriodsRepository numberPeriodsRepository;
+	@Autowired
+	private NumberPeriodsRepository numberPeriodsRepository;
 
-    /**
-     * 根据ID查询数据
-     * @param id 主键ID
-     */
-    @Override
-    @Transactional
-    public NumberPeriods getById(Long id) {
-        return numberPeriodsRepository.findById(id).orElse(null);
-    }
+	/**
+	 * 根据ID查询数据
+	 * 
+	 * @param id
+	 *            主键ID
+	 */
+	@Override
+	@Transactional
+	public NumberPeriods getById(Long id) {
+		return numberPeriodsRepository.findById(id).orElse(null);
+	}
 
-    /**
-     * 获取分页列表数据
-     * @param example 查询实例
-     * @return 返回分页数据
-     */
-    @Override
-    public Page<NumberPeriods> getPageList(Example<NumberPeriods> example) {
-        // 创建分页对象
-        PageRequest page = PageSort.pageRequest();
-        return numberPeriodsRepository.findAll(example, page);
-    }
+	/**
+	 * 获取分页列表数据
+	 * 
+	 * @param example
+	 *            查询实例
+	 * @return 返回分页数据
+	 */
+	@Override
+	public Page<NumberPeriods> getPageList(Example<NumberPeriods> example) {
+		// 创建分页对象
+		PageRequest page = PageSort.pageRequest();
+		return numberPeriodsRepository.findAll(example, page);
+	}
 
-    /**
-     * 保存数据
-     * @param numberPeriods 实体对象
-     */
-    @Override
-    public NumberPeriods save(NumberPeriods numberPeriods) {
-        return numberPeriodsRepository.save(numberPeriods);
-    }
+	/**
+	 * 保存数据
+	 * 
+	 * @param numberPeriods
+	 *            实体对象
+	 */
+	@Override
+	public NumberPeriods save(NumberPeriods numberPeriods) {
+		return numberPeriodsRepository.save(numberPeriods);
+	}
 
-    /**
-     * 状态(启用，冻结，删除)/批量状态处理
-     */
-    @Override
-    @Transactional
-    public Boolean updateStatus(StatusEnum statusEnum, List<Long> idList) {
-        return numberPeriodsRepository.updateStatus(statusEnum.getCode(), idList) > 0;
-    }
-    /**
+	/**
+	 * 状态(启用，冻结，删除)/批量状态处理
+	 */
+	@Override
+	@Transactional
+	public Boolean updateStatus(StatusEnum statusEnum, List<Long> idList) {
+		return numberPeriodsRepository.updateStatus(statusEnum.getCode(), idList) > 0;
+	}
+
+	/**
 	 * 通过小区的id，期数的编号，查询期数数据
+	 * 
 	 * @param rId
 	 * @param Number
 	 * @return
 	 */
 	@Override
 	public NumberPeriods getNumberPeriodsByRidAndNumber(Long rId, String Number) {
-	
+
 		return numberPeriodsRepository.getNumberPeriodsByRidAndNumber(rId, Number);
+	}
+
+	/**
+	 * 根据小区的id和期数的名称查询数据
+	 */
+	@Override
+	public NumberPeriods getNumberPeriodsByRidAnNname(Long rId, String nName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

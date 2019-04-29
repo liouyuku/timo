@@ -1,18 +1,11 @@
 package com.linln.admin.system.controller;
 
-import com.linln.common.config.properties.ProjectProperties;
-import com.linln.common.data.URL;
-import com.linln.common.enums.ResultEnum;
-import com.linln.common.exception.ResultException;
-import com.linln.common.utils.CaptchaUtil;
-import com.linln.common.utils.ResultVoUtil;
-import com.linln.common.utils.SpringContextUtil;
-import com.linln.common.vo.ResultVo;
-import com.linln.component.actionLog.action.UserAction;
-import com.linln.component.actionLog.annotation.ActionLog;
-import com.linln.component.shiro.ShiroUtil;
-import com.linln.modules.system.domain.User;
-import com.linln.modules.system.service.RoleService;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -29,10 +22,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import com.linln.common.config.properties.ProjectProperties;
+import com.linln.common.data.URL;
+import com.linln.common.enums.ResultEnum;
+import com.linln.common.exception.ResultException;
+import com.linln.common.utils.CaptchaUtil;
+import com.linln.common.utils.ResultVoUtil;
+import com.linln.common.utils.SpringContextUtil;
+import com.linln.common.vo.ResultVo;
+import com.linln.component.actionLog.action.UserAction;
+import com.linln.component.actionLog.annotation.ActionLog;
+import com.linln.component.shiro.ShiroUtil;
+import com.linln.modules.system.domain.User;
+import com.linln.modules.system.service.RoleService;
 
 /**
  * @author 小懒虫

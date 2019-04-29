@@ -1,12 +1,8 @@
 package com.linln.admin.system.controller;
 
-import com.linln.common.exception.ResultException;
-import com.linln.common.utils.ResultVoUtil;
-import com.linln.common.vo.ResultVo;
-import com.linln.component.fileUpload.FileUpload;
-import com.linln.component.fileUpload.enums.UploadResultEnum;
-import com.linln.modules.system.domain.Upload;
-import com.linln.modules.system.service.UploadService;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
+import com.linln.common.exception.ResultException;
+import com.linln.common.utils.ResultVoUtil;
+import com.linln.common.vo.ResultVo;
+import com.linln.component.fileUpload.FileUpload;
+import com.linln.component.fileUpload.enums.UploadResultEnum;
+import com.linln.modules.system.domain.Upload;
+import com.linln.modules.system.service.UploadService;
 
 /**
  * @author 小懒虫
