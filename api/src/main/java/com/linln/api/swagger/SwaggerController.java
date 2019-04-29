@@ -4,6 +4,8 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.linln.component.jwt.annotation.JwtPermissions;
+
 /**
  * @author 小懒虫
  * @date 2018/12/9
@@ -17,4 +19,19 @@ public class SwaggerController {
         return "redirect:/swagger-ui.html";
     }
     
+    
+    @GetMapping("/api/test")
+    @JwtPermissions
+    public String test(){
+    	System.out.println("执行咯test");
+        return "redirect:/swagger-ui.html";
+    }
+    
+    
+    @GetMapping("/api/login")
+    @JwtPermissions
+    public String login(){
+    	System.out.println("执行咯login");
+        return "redirect:/swagger-ui.html";
+    }
 }
