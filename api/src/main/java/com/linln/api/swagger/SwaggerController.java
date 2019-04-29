@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.linln.component.jwt.annotation.JwtPermissions;
 
 /**
- * @author 小懒虫
+ * @author pengzizi
  * @date 2018/12/9
  */
 @Controller

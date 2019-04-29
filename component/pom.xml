@@ -13,6 +13,9 @@
         <module>fileUpload</module>
         <module>jwt</module>
     <module>tcpserver</module>
+    <module>controlServer</module>
+    <module>controlTcpServer</module>
+    <module>xydparkserver</module>
   </modules>
 
     <parent>
