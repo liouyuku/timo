@@ -1,4 +1,4 @@
-package com.linln.devtools.swagger;
+package com.linln.api.swagger;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SwaggerController {
 
-    @GetMapping("/dev/swagger")
-    @RequiresPermissions("/dev/swagger")
+    @GetMapping("/api/swagger")
+    @RequiresPermissions("/api/swagger")
     public String index(){
         return "redirect:/swagger-ui.html";
     }
+    
 }

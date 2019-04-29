@@ -39,6 +39,10 @@ public class XydServer {
 	public static ConcurrentHashMap<String, Message> MSG_MAP = new ConcurrentHashMap<String, Message>();
 
 	private static ConnectEvent CONECTEVENT;
+	
+	public static void main(String[] args) {
+		XydServer.start(null);
+	}
 
 	
 	/**

@@ -1,4 +1,4 @@
-package com.linln.devtools.swagger.config;
+package com.linln.api.swagger.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,14 +24,14 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.linln.devtools"))
+                .apis(RequestHandlerSelectors.basePackage("com.linln.api"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("TIMO后台管理系统数据接口")
+                .title("TIMO系统数据接口")
                 .description("Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化RESTful风格的Web服务。")
                 .version("v2.0")
                 .build();
