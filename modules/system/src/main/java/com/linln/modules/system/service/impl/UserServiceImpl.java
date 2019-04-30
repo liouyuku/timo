@@ -76,7 +76,12 @@ public class UserServiceImpl implements UserService {
         // 使用Specification复杂查询
         return userRepository.findAll(new Specification<User>(){
 
-            @Override
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
             public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 List<Predicate> preList = new ArrayList<>();
                 if(user.getId() != null){

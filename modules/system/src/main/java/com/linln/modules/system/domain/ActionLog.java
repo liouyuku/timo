@@ -16,7 +16,11 @@ import java.util.Date;
 @Table(name="sys_action_log")
 @EntityListeners(AuditingEntityListener.class)
 public class ActionLog implements Serializable {
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4339160121414292416L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;

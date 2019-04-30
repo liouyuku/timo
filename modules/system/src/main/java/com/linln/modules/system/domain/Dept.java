@@ -27,6 +27,10 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @Where(clause = StatusUtil.notDelete)
 public class Dept implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8299910711583379739L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
