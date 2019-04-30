@@ -17,6 +17,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class BootApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
+    	System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(BootApplication.class, args);
     }
 
