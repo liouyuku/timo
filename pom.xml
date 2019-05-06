@@ -17,7 +17,8 @@
         <module>devtools</module>
         <module>modules</module>
         <module>api</module>
-  </modules>
+        <module>api</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
