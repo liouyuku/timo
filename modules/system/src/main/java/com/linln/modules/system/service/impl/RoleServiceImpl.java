@@ -66,6 +66,7 @@ public class RoleServiceImpl implements RoleService {
     public Page<Role> getPageList(Example<Role> example) {
         // 创建分页对象
         PageRequest page = PageSort.pageRequest(Sort.Direction.ASC);
+        
         return roleRepository.findAll(example, page);
     }
 

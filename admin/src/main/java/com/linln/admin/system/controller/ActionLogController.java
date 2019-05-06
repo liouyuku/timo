@@ -41,6 +41,17 @@ public class ActionLogController {
 
         // 封装数据
         model.addAttribute("list",list.getContent());
+        System.out.println("获取当前页码==="+list.getNumber());
+        System.out.println("总共有多少条数据==="+list.getTotalElements());
+        System.out.println("总共有多少页==="+list.getTotalPages());
+        System.out.println("每页指定有多少元素==="+list.getSize());
+        System.out.println("当前页实际有多少元素==="+list.getNumberOfElements());
+        System.out.println("当前页是否有数据==="+list.hasContent());
+        System.out.println("当前页是否是第一页==="+list.isFirst());
+        System.out.println("当前页是否是最后一页==="+list.isLast());
+        
+        System.out.println("是否有上一页==="+list.hasPrevious());
+        System.out.println("是否有下一页==="+list.hasNext());
         model.addAttribute("page",list);
         return "/system/actionLog/index";
     }

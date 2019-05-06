@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="timo-detail-page">
+        <div class="timo-detail-title">基本信息</div>
+        <table class="layui-table timo-detail-table">
+            <colgroup>
+                <col width="100px"><col>
+                <col width="100px"><col>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th>主键ID</th>
+                    <td th:text="${numberofperiods.id}"></td>
+                    <th>期数名字</th>
+                    <td th:text="${numberofperiods.name}"></td>
+                </tr>
+                <tr>
+                    <th>期数编号</th>
+                    <td th:text="${numberofperiods.numberOfPeriodsNumber}"></td>
+                    <th>小区id</th>
+                    <td th:text="${numberofperiods.residentialQuartersId}"></td>
+                </tr>
+                <tr>
+                    <th>创建时间</th>
+                    <td th:text="${#dates.format(numberofperiods.createDate, 'yyyy-MM-dd HH:mm:ss')}" colspan="3"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>
