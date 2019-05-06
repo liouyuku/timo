@@ -34,6 +34,8 @@ import com.linln.component.thymeleaf.utility.DictUtil;
 import com.linln.modules.system.domain.Menu;
 import com.linln.modules.system.service.MenuService;
 
+import cn.hutool.log.Log;
+
 /**
  * @author 小懒虫
  * @date 2018/8/14

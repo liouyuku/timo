@@ -1,6 +1,9 @@
 package com.linln.modules.system.repository;
 
 import com.linln.modules.system.domain.Role;
+import com.linln.modules.system.domain.Test;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -65,5 +68,13 @@ public interface RoleRepository extends BaseRepository<Role,Long> {
     @Transactional
     @Query(value = "DELETE FROM sys_role_menu WHERE role_id in ?1", nativeQuery = true)
     public Integer cancelMenuJoin(List<Long> ids);
+
+
+    @Query(value = "select NEW com.linln.modules.system.domain.Test(title,name) FROM Role r")
+    Page<Test> search(Pageable pageable);
+
+
+    @Query(value = "select NEW com.linln.modules.system.domain.Test(n.name,n.numberOfPeriodsNumber) FROM NumberPeriods n left join Residential r on r.id = n.residentialQuartersId")
+    Page<Test> search1(Pageable pageable);
 
 }

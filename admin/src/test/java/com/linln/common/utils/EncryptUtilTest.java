@@ -2,7 +2,6 @@ package com.linln.common.utils;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 /**
  * 密码加密测试类，可用于重置密码
