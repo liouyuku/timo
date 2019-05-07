@@ -69,12 +69,4 @@ public interface RoleRepository extends BaseRepository<Role,Long> {
     @Query(value = "DELETE FROM sys_role_menu WHERE role_id in ?1", nativeQuery = true)
     public Integer cancelMenuJoin(List<Long> ids);
 
-
-    @Query(value = "select NEW com.linln.modules.system.domain.Test(title,name) FROM Role r")
-    Page<Test> search(Pageable pageable);
-
-
-    @Query(value = "select NEW com.linln.modules.system.domain.Test(n.name,n.numberOfPeriodsNumber) FROM NumberPeriods n left join Residential r on r.id = n.residentialQuartersId")
-    Page<Test> search1(Pageable pageable);
-
 }
