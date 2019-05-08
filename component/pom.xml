@@ -15,7 +15,8 @@
 	    <module>tcpserver</module>
 	    <module>xydparkserver</module>
     <module>push</module>
-  </modules>
+        <module>websocke</module>
+    </modules>
 
     <parent>
         <groupId>com.linln</groupId>
