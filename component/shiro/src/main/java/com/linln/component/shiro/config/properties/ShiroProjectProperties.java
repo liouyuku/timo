@@ -19,4 +19,5 @@ public class ShiroProjectProperties {
     private Integer globalSessionTimeout = 1800;
     // Session会话检测间隔时间，默认15分钟
     private Integer sessionValidationInterval = 900;
+
 }
