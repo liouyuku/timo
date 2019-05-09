@@ -72,7 +72,10 @@ spring:
       hibernate.dialect: com.linln.common.mysql.MySQLDialectUTF8
       hibernate.format_sql: false
     open-in-view: true
-
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.linln.modules.mybatis
   ## thymeleaf模板设置
   thymeleaf:
     prefix: classpath:/templates

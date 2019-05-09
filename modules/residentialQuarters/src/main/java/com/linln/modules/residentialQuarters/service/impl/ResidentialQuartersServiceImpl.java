@@ -2,6 +2,7 @@ package com.linln.modules.residentialQuarters.service.impl;
 
 import com.linln.common.data.PageSort;
 import com.linln.common.enums.StatusEnum;
+import com.linln.modules.mybatis.ResidentialQuartersMapper;
 import com.linln.modules.residentialQuarters.domain.ResidentialQuarters;
 import com.linln.modules.residentialQuarters.repository.ResidentialQuartersRepository;
 import com.linln.modules.residentialQuarters.service.ResidentialQuartersService;
@@ -25,6 +26,9 @@ public class ResidentialQuartersServiceImpl implements ResidentialQuartersServic
     @Autowired
     private ResidentialQuartersRepository residentialQuartersRepository;
 
+    @Autowired
+    private ResidentialQuartersMapper dao;
+
     /**
      * 根据ID查询数据
      * @param id 主键ID
@@ -44,6 +48,9 @@ public class ResidentialQuartersServiceImpl implements ResidentialQuartersServic
     public Page<ResidentialQuarters> getPageList(Example<ResidentialQuarters> example) {
         // 创建分页对象
         PageRequest page = PageSort.pageRequest();
+        ResidentialQuarters a = new ResidentialQuarters();
+        a.setName("s");
+        dao.save(null);
         return residentialQuartersRepository.findAll(example, page);
     }
 
@@ -67,10 +74,6 @@ public class ResidentialQuartersServiceImpl implements ResidentialQuartersServic
     }
     /**
 	 * 通过小区的名称和status查询小区的数据
-	 * 
-	 * @param rName
-	 * @param status
-	 * @return
 	 */
 	@Override
 	public Optional<ResidentialQuarters> selectResidentialQuartersByrNameAndStauts(Example<ResidentialQuarters> example) {
