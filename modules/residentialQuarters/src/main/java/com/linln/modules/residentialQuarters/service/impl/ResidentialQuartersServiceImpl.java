@@ -48,8 +48,6 @@ public class ResidentialQuartersServiceImpl implements ResidentialQuartersServic
     public Page<ResidentialQuarters> getPageList(Example<ResidentialQuarters> example) {
         // 创建分页对象
         PageRequest page = PageSort.pageRequest();
-        ResidentialQuarters a = new ResidentialQuarters();
-        a.setName("s");
         dao.save(null);
         return residentialQuartersRepository.findAll(example, page);
     }
