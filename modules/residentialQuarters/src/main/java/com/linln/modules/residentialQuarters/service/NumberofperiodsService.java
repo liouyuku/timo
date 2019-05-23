@@ -28,8 +28,6 @@ public interface NumberofperiodsService {
 	/**
 	 * 获取自定义不带查询条件列表数据
 	 * 
-	 * @param sql
-	 * @param param
 	 * @return
 	 */
 	Page<NumberOfPeriodsPageListBean> getCustomNoPageList();

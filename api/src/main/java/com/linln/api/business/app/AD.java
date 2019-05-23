@@ -18,13 +18,20 @@ public class AD {
     public @ResponseBody
     Response appAdvertisement(
             @ApiParam(name = "type", value = "类型", required = true) @RequestParam("type") String type,
-            @ApiParam(name = "retrunFalg", value = "返回数据类型") @RequestParam("retrunFalg") String retrunFalg) {
+            @ApiParam(name = "returnFlag", value = "返回数据类型") @RequestParam("returnFlag") String returnFlag) {
+        return new Response().success(null);
+    }
+
+    @ApiOperation(value = "app引导界面", response = Response.class)
+    @RequestMapping(value = "/app/prologue", method = RequestMethod.GET)
+    public @ResponseBody
+    Response prologue() {
         return new Response().success(null);
     }
 
 
-    @ApiOperation(value = "移动端获取图片", response = Response.class)
-    @RequestMapping(value = "/backgroundPicture", method = RequestMethod.GET)
+    @ApiOperation(value = "加載APP時候的廣告業", response = Response.class)
+    @RequestMapping(value = "/app/homePage", method = RequestMethod.GET)
     public @ResponseBody
     Response getBackgroundPicture() {
         return new Response().success(null);

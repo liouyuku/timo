@@ -32,4 +32,11 @@ public class System {
         return null;
     }
 
+    @ApiOperation(value = "获取服务器时间", response = Response.class)
+    @RequestMapping(value = "/currentTime", method = RequestMethod.GET)
+    public @ResponseBody
+    Response currentTime() {
+        return null;
+    }
+
 }

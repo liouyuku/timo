@@ -1,26 +1,7 @@
 package com.linln.admin.residentialQuarters.controller;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.linln.admin.residentialQuarters.validator.NumberofperiodsValid;
 import com.linln.common.constant.StatusConst;
-import com.linln.common.data.PageBean;
 import com.linln.common.enums.StatusEnum;
 import com.linln.common.utils.EntityBeanUtil;
 import com.linln.common.utils.GenerateNumberUtil;
@@ -29,8 +10,19 @@ import com.linln.common.utils.StatusUtil;
 import com.linln.common.vo.ResultVo;
 import com.linln.modules.residentialQuarters.bean.NumberOfPeriodsPageListBean;
 import com.linln.modules.residentialQuarters.domain.Numberofperiods;
-import com.linln.modules.residentialQuarters.repository.NumberofperiodsRepository;
 import com.linln.modules.residentialQuarters.service.NumberofperiodsService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
  * @author 小懒虫
@@ -42,8 +34,6 @@ public class NumberofperiodsController {
 
 	@Autowired
 	private NumberofperiodsService numberofperiodsService;
-	@Autowired
-	private NumberofperiodsRepository numberofperiodsRepository;
 
 	/**
 	 * 跳转到添加期数的页面

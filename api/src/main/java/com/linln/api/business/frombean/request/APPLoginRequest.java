@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 public class APPLoginRequest {
     @ApiModelProperty("手机型号")
     private String mobile_type;
-    @ApiModelProperty("系统类型.IOS/ANDORID")
+    @ApiModelProperty("系统类型.IOS/ANDROID")
     private String os_type;
     @ApiModelProperty("安卓sdk版本")
     private String os_version;

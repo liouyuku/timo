@@ -6,11 +6,11 @@ import lombok.Data;
 public class DeviceConfigRequest {
 
     // 视频呼叫超时时长
-    private Float agoraTimeout;
+    private Integer agoraTimeout;
     // 视频通话时长
-    private Float agoraDuration;
+    private Integer agoraDuration;
     // sip连接超时时长
-    private Float sipTimeout;
+    private Integer sipTimeout;
     // sip连接时长
-    private Float sipDuration;
+    private Integer sipDuration;
 }

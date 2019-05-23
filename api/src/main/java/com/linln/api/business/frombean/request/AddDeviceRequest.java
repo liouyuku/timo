@@ -11,7 +11,7 @@ public class AddDeviceRequest extends Request {
     private String mac;
     @ApiModelProperty(value="push类型：mina，jpush")
     private String pushType;
-    @ApiModelProperty(value="flag")
+    @ApiModelProperty(value="flag",example="0")
     private Integer flag;
     @ApiModelProperty(value="版本")
     private String version;

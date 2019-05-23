@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class Announcement {
     @ApiOperation(value = "设备获取通告", response = Response.class)
-    @RequestMapping(value = "/announcement", method = RequestMethod.GET)
+    @RequestMapping(value = "/device/announcement", method = RequestMethod.GET)
     public @ResponseBody
-    Response get(@ApiParam(name="eId",value="设备id",required=true)
-                             @RequestParam("eId") String eId) {
+    Response get(@ApiParam(name="deviceId",value="设备id",required=true)
+                             @RequestParam("deviceId") String deviceId) {
         return new Response().success(null);
     }
 }

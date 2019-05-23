@@ -13,6 +13,10 @@ project:
     #file-path:                               #文件上传路径，默认在项目根目录upload下
     static-path: /upload/**                   #上传文件静态访问路径
 
+logging:
+  level:
+    root: info
+    org.springframework: debug
 ### spring配置
 spring:
   datasource:

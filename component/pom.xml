@@ -13,9 +13,7 @@
         <module>fileUpload</module>
         <module>jwt</module>
 	    <module>tcpserver</module>
-	    <module>xydparkserver</module>
-    <module>push</module>
-        <module>websocke</module>
+        <module>push</module>
     </modules>
 
     <parent>

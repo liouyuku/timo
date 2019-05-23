@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ScreenAD {
 
     @ApiOperation(value = "设备主屏信息", response = Response.class)
-    @RequestMapping(value = "/screenImgs", method = RequestMethod.GET)
+    @RequestMapping(value = "/device/ad", method = RequestMethod.GET)
     public @ResponseBody
-    Response getScreenImgs(@ApiParam(name="mac",value="设备的mac") @RequestParam("mac") String mac) {
+    Response getScreenImg(@ApiParam(name="mac",value="设备的mac") @RequestParam("mac") String mac) {
         return new Response().success(null);
     }
 }
