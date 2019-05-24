@@ -8,7 +8,7 @@
 			<p>Callback for remove node.</p>
 			<p class="highlight_red">1. If you set 'setting.callback.beforeRename',and return false, zTree will keep the editing name, and will not trigger the 'onRename' callback.</p>
 			<p class="highlight_red">2. If you modify treeNode data, and use 'updateNode' function, zTree will not trigger the 'onRename' callback.</p>
-			<p class="highlight_red">3. From v3.5.13, zTree will trigger this callback when user cancel edit name. please see 'isCancel' parameter.</p>
+			<p class="highlight_red">3. From v3.5.13, zTree will trigger this callback when appUser cancel edit name. please see 'isCancel' parameter.</p>
 			<p>Default: null</p>
 		</div>
 	</div>
@@ -22,8 +22,8 @@
 	<p>JSON data object of the node which was rename.</p>
 	<h4 class="topLine"><b>isCancel</b><span>Boolean</span></h4>
 	<p>the status about cancel edit name (v3.5.13+)</p>
-	<p class="highlight_red">isCancel = true means: user cancel edit name. (press ESC or use cancelEditName() function)</p>
-	<p class="highlight_red">isCancel = false means: user submit edit name.</p>
+	<p class="highlight_red">isCancel = true means: appUser cancel edit name. (press ESC or use cancelEditName() function)</p>
+	<p class="highlight_red">isCancel = false means: appUser submit edit name.</p>
 	</div>
 	<h3>Examples of setting & function</h3>
 	<h4>1. When rename node, alert info about 'tId' and 'name'.</h4>

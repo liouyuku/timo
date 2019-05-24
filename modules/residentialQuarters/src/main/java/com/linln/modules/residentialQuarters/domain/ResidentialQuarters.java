@@ -7,14 +7,9 @@ import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * @author 小懒虫
@@ -22,7 +17,7 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@Table(name="residential_residentialQuarters")
+@Table(name="residential_residential_quarters")
 @EntityListeners(AuditingEntityListener.class)
 @Where(clause = StatusUtil.notDelete)
 public class ResidentialQuarters implements Serializable {

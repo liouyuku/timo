@@ -14,6 +14,10 @@ import java.util.Optional;
  * @date 2019/04/30
  */
 public interface ResidentialQuartersService {
+    /**
+     * 查询全部的小区数据
+     */
+    List<ResidentialQuarters> getDataAllResidentialQuarters();
 	/**
 	 * 通过小区的名称和status查询小区的数据
 	 * 

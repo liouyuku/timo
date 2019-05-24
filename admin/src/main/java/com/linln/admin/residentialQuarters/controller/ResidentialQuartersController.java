@@ -97,7 +97,7 @@ public class ResidentialQuartersController {
 
 		Example<ResidentialQuarters> example = Example.of(residentialQuarters, matcher);
 		Optional<ResidentialQuarters> rData=residentialQuartersService.selectResidentialQuartersByrNameAndStauts(example);
-		if (rData != null) {
+		if (rData.isPresent()) {
 			return ResultVoUtil.error(StatusConst.RESIDENTIALQUARTERS_NAMES_NO_REPEATED);
 
 		}

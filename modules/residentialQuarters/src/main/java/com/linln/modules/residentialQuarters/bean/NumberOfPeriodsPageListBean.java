@@ -1,11 +1,9 @@
 package com.linln.modules.residentialQuarters.bean;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-
 import com.linln.common.enums.StatusEnum;
-
 import lombok.Data;
+
+import java.sql.Timestamp;
 
 @Data
 public class NumberOfPeriodsPageListBean {
@@ -36,12 +34,13 @@ public class NumberOfPeriodsPageListBean {
 	 *  小区id
 	 */
 	private Long residentialQuartersId;
-	public NumberOfPeriodsPageListBean(Long id, String name, String rName, String numberOfPeriodsNumber,
+	public NumberOfPeriodsPageListBean(Long id, String rName,String name,  String numberOfPeriodsNumber,
 			Object createDate) {
 		super();
 		this.id = id;
-		this.name = name;
 		this.rName = rName;
+		this.name = name;
+
 		this.numberOfPeriodsNumber = numberOfPeriodsNumber;
 		this.createDate = (Timestamp) createDate;
 	}

@@ -30,13 +30,13 @@
                     <i class="fa layui-icon layui-icon-screen-full"></i>
                 </a>
             </li>
-            <li class="layui-nav-item timo-nav-user">
+            <li class="layui-nav-item timo-nav-appUser">
                 <a class="timo-header-nickname" th:text="${user.nickname}">TIMO</a>
                 <div class="layui-nav-child">
                     <div class="timo-nav-child-box">
                         <div><a class="open-popup" data-title="个人信息" th:attr="data-url=@{/userInfo}"
                                 data-size="680,464"><!--
-              --><i class="fa fa-user-o"></i>个人信息</a></div>
+              --><i class="fa fa-appUser-o"></i>个人信息</a></div>
                         <div><a class="open-popup" data-title="修改密码" th:attr="data-url=@{/editPwd}"
                                 data-size="456,296"><!--
               --><i class="fa fa-lock" style="font-size:17px;width:12px;"></i>修改密码</a></div>

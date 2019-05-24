@@ -24,7 +24,12 @@ public class ResidentialQuartersServiceImpl implements ResidentialQuartersServic
 
     @Autowired
     private ResidentialQuartersRepository residentialQuartersRepository;
-
+    /**
+     * 查询全部的小区数据
+     */
+    public List<ResidentialQuarters> getDataAllResidentialQuarters(){
+        return residentialQuartersRepository.findAll();
+    };
     /**
      * 根据ID查询数据
      * @param id 主键ID

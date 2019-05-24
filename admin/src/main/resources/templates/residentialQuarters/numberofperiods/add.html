@@ -12,12 +12,24 @@
                 <input class="layui-input" type="text" name="name" placeholder="请输入期数名字" th:value="${numberofperiods?.name}">
             </div>
         </div>
+
         <div class="layui-form-item">
+            <label class="layui-form-label">期数编号</label>
+            <div class="layui-input-inline">
+                <select name="numberOfPeriodsNumber" lay-verify="required">
+
+                    <option value="">---请选择---</option>
+                    <option th:selected="${ numberofperiods.numberOfPeriodsNumber eq c}" th:each="c:${numberList}" th:value="${c}" th:text="${c}"></option>
+
+                </select>
+            </div>
+        </div>
+        <!--<div class="layui-form-item">
             <label class="layui-form-label">期数编号</label>
             <div class="layui-input-inline">
                 <input class="layui-input" type="text" name="numberOfPeriodsNumber" placeholder="请输入期数编号" th:value="${numberofperiods?.numberOfPeriodsNumber}">
             </div>
-        </div>
+        </div>-->
         <div class="layui-form-item">
             <label class="layui-form-label">小区id</label>
             <div class="layui-input-inline">

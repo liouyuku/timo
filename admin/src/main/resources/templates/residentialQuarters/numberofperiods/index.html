@@ -28,12 +28,12 @@
                             <input type="text" name="rName" th:value="${param.name}" placeholder="请输入期数名字" autocomplete="off" class="layui-input">
                         </div>
                     </div>
-                    <div class="layui-inline">
+                    <!--<div class="layui-inline">
                         <label class="layui-form-label">期数编号</label>
                         <div class="layui-input-block">
                             <input type="text" name="numberOfPeriodsNumber" th:value="${param.numberOfPeriodsNumber}" placeholder="请输入期数编号" autocomplete="off" class="layui-input">
                         </div>
-                    </div>
+                    </div>-->
                     <div class="layui-inline">
                         <button class="layui-btn timo-search-btn">
                             <i class="fa fa-search"></i>
@@ -41,8 +41,7 @@
                     </div>
                 </div>
                 <div class="pull-right screen-btn-group">
-                    <button class="layui-btn open-popup" data-title="添加期数列表" th:attr="data-url=@{/residentialQuarters/numberofperiods/add}" data-size="auto">
-                        <i class="fa fa-plus"></i> 添加</button>
+
                     <div class="btn-group">
                         <button class="layui-btn">操作<span class="caret"></span></button>
                         <dl class="layui-nav-child layui-anim layui-anim-upbit">
@@ -74,13 +73,16 @@
                         <td><label class="timo-checkbox"><input type="checkbox" th:value="${item.id}">
                             <i class="layui-icon layui-icon-ok"></i></label></td>
                         <td th:text="${item.id}">主键ID</td>
-                          <td th:text="${item.name}">期数名字</td>
+
                         <td th:text="${item.rName}">小区名字</td>
+                        <td th:text="${item.name}">期数名字</td>
                         <td th:text="${item.numberOfPeriodsNumber}">期数编号</td>
                         <td th:text="${#dates.format(item.createDate, 'yyyy-MM-dd HH:mm:ss')}">创建时间</td>
                         <td>
                             <a class="open-popup" data-title="编辑期数列表" th:attr="data-url=@{'/residentialQuarters/numberofperiods/edit/'+${item.id}}" data-size="auto" href="#">编辑</a>
                             <a class="open-popup" data-title="详细信息" th:attr="data-url=@{'/residentialQuarters/numberofperiods/detail/'+${item.id}}" data-size="800,600" href="#">详细</a>
+                            <a class="open-popup" data-title="增加栋数" th:attr="data-url=@{'/residential/numberOfBuildings/add/'+${item.id}}" data-size="800,600" href="#">增加栋数</a>
+
                             <a class="ajax-get" data-msg="您是否确认删除" th:href="@{/residentialQuarters/numberofperiods/status/delete(ids=${item.id})}">删除</a>
                         </td>
                     </tr>

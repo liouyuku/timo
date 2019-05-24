@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+<div class="layui-form timo-compile">
+    <form th:action="@{/user/appUser/edit}">
+        <input type="hidden" name="id" th:if="${appUser}" th:value="${appUser.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" th:value="${appUser.name}" name="name" placeholder="请输入姓名">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" th:value="${appUser.userName}" name="userName" placeholder="请输入用户名"
+                >
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话号码</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" th:value="${appUser.mobilePhone}" name="mobilePhone" placeholder="请输入电话号码"
+                >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备用电话</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" th:value="${appUser.standbyTelephone}" name="standbyTelephone" placeholder="请输入备用电话"
+                >
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户类型</label>
+            <div class="layui-input-inline">
+                <select name="userType" lay-verify="required">
+
+                    <option th:selected="${appUser.userType==1}" th:text="业主" th:value="1"></option>
+                    <option th:selected="${appUser.userType==2}" th:text="租客" th:value="2"></option>
+                    <option th:selected="${appUser.userType==3}" th:text="家属" th:value="3"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+
+</body>
+</html>

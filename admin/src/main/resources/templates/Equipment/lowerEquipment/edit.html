@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <script type="text/javascript" th:src="@{/js/custom.js}"></script>
+    <script type="text/javascript" th:src="@{/js/plugins/jquery-3.3.1.min.js}"></script>
+</head>
+<body>
+<div class="layui-form timo-compile">
+    <form th:action="@{/Equipment/lowerEquipment/edit}">
+        <input type="hidden" name="id" th:if="${lowerEquipment}" th:value="${lowerEquipment.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">小区名称</label>
+            <div class="layui-input-inline">
+                <select name="residentialQuartersId" lay-verify="required" lay-filter="residentialQuartersId"
+                >
+
+
+                    <option th:selected="${lowerEquipment.getResidentialQuartersName() eq list.getName()}" th:each="list:${residentialQuartersList}" th:value="${lowerEquipment.getResidentialQuartersId()}"
+                            th:text="${lowerEquipment.getResidentialQuartersName()}" th:if="${lowerEquipment.getResidentialQuartersName() eq list.getName()}"></option>
+                    <option  th:each="list:${residentialQuartersList}" th:value="${list.getId()}"
+                            th:text="${list.getName()}" th:if="${lowerEquipment.getResidentialQuartersName() ne list.getName()}"></option>
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">期数名称</label>
+            <div class="layui-input-inline">
+                <select name="numberOfPeriods" lay-verify="required" lay-filter="numberOfPeriodsId" id="numberOfPeriods"
+                >
+                    <option   th:value="${lowerEquipment.getNumberofperiodsId()}" th:text="${lowerEquipment.getNumberofperiodsName()}"></option>
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">栋数名称</label>
+            <div class="layui-input-inline">
+                <select name="numberOfBuildings" lay-verify="required" lay-filter="numberOfBuildingsId"
+                        id="numberOfBuildings"
+                >
+                    <option   th:value="${lowerEquipment.getNumberOfBuildingsId()}" th:text="${lowerEquipment.getNumberOfBuildingsName()}"></option>
+
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否为广告机</label>
+            <div class="layui-input-inline">
+                <select name="isAdvertising" lay-verify="required" lay-filter="isAdvertising"
+                        id="isAdvertising">
+                    <option th:selected="${isAdvertising==lowerEquipment.getIsAdvertising()}"
+                            th:each="isAdvertising:${isAdver}" th:value="${isAdvertising}" th:text="下位机"
+                            th:if="${isAdvertising==0}"></option>
+                    <option th:selected="${isAdvertising==lowerEquipment.getIsAdvertising()}"
+                            th:each="isAdvertising:${isAdver}" th:value="${isAdvertising}" th:text="广告机"
+                            th:if="${isAdvertising==1}"></option>
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否为测试机</label>
+            <div class="layui-input-inline">
+                <select name="isTest" lay-verify="required" lay-filter="isTest"
+                        id="isTest">
+                    <option th:selected="${isTest==lowerEquipment.getIsTest()}"
+                            th:each="isTest:${isTest}" th:value="${isTest}" th:text="正式机"
+                            th:if="${isTest==0}"></option>
+                    <option th:selected="${isTest==lowerEquipment.getIsTest()}"
+                            th:each="isTest:${isTest}" th:value="${isTest}" th:text="测试机"
+                            th:if="${isTest==1}"></option>
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">绑定类型</label>
+            <div class="layui-input-inline">
+                <select name="bulidType" lay-verify="required" lay-filter="bulidType"
+                        id="bulidType">
+                    <option th:selected="${buildType==lowerEquipment.getBuildType()}"
+                            th:each="buildType:${buildType}" th:value="${buildType}" th:text="小区"
+                            th:if="${buildType==2}"></option>
+                    <option th:selected="${buildType==lowerEquipment.getBuildType()}"
+                            th:each="buildType:${buildType}" th:value="${buildType}" th:text="栋数"
+                            th:if="${buildType==1}"></option>
+
+                </select>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+<script type="text/javascript" th:src="@{/js/plugins/jquery-3.3.1.min.js}"></script>
+<script type="text/javascript">
+
+    layui.use(['jquery', 'form', 'layer'], function () {
+        var $ = layui.jquery
+        var layer = layui.layer;
+        var form = layui.form;
+        //点击期数下拉列表激发
+        form.on("select(numberOfPeriodsId)", function (data) {
+            //将栋数的下拉列表清空
+            $("select[name='numberOfBuildings']").empty();
+            //发送ajax请求查询该期数下面的栋数
+            $.ajax({
+                type: "get",
+                url: "/residential/numberOfBuildings/getDataNumberOfBuildings?numberOfPeriodsId=" + data.value,
+
+                success: function (callBackData) {
+                    if (callBackData.code = 200) {
+                        layer.msg("成功")
+                        $("select[name='numberOfBuildings']").empty();
+
+                        var optionstring = "";
+
+                        $.each(callBackData.data, function (i, item) {
+
+                            optionstring += "<option value=\"" + item.id + "\" >" + item.name + "</option>";
+                        });
+                        $("#numberOfBuildings").html(optionstring);
+                        form.render('select');
+
+                    } else {
+                        layer.msg("失败")
+                    }
+                },
+                error: function () {
+                    layer.msg("程序内部错误")
+                }
+
+            });
+            return false;
+        });
+        //点击小区下拉列表激发
+        form.on("select(residentialQuartersId)", function (data) {
+            //将期数的下拉列表清空
+            $("select[name='numberOfPeriods']").empty();
+            //讲栋数的下拉列表清空
+            $("select[name='numberOfBuildings']").empty();
+            //发送ajax请求查询该小区下面的期数
+            $.ajax({
+                type: "get",
+                url: "/residentialQuarters/numberofperiods/getNumberOfPeriods?rId=" + data.value,
+
+                success: function (callBackData) {
+                    if (callBackData.code = 200) {
+
+
+                        var optionstring = "";
+
+                        $.each(callBackData.data, function (i, item) {
+
+                            optionstring += "<option value=\"" + item.id + "\" >" + item.name + "</option>";
+                        });
+                        $("#numberOfPeriods").html(optionstring);
+                        form.render('select');
+
+                    } else {
+                        layer.msg("失败")
+                    }
+                },
+                error: function () {
+                    layer.msg("程序内部错误")
+                }
+
+            });
+            return false;
+        })
+
+
+    });
+
+</script>
+</body>
+</html>

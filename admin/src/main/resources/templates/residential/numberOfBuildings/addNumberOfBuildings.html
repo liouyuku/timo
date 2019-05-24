@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+<div class="layui-form timo-compile">
+    <form th:action="@{/residential/numberOfBuildings/add}">
+        <input type="hidden" name="numberOfPeriodsId" th:value="${nId}">
+         <div class="layui-form-item">
+            <label class="layui-form-label">栋数名称</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="name" placeholder="请输入栋数名称" th:value="${numberOfBuildings?.name}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">栋数编号</label>
+            <div class="layui-input-inline">
+                <select name="numberOfBuildingsNumber" lay-verify="required">
+
+                    <option value="">---请选择---</option>
+                    <option th:each="c:${numList}" th:value="${c}" th:text="${c}"></option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">第一台梯控mac</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="ladderControlFristMac" placeholder="请输入第一台梯控mac" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">第二台梯控mac</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="ladderControlSecondMac" placeholder="请输入第二台梯控mac" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">第一台梯控备注</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="ladderControlFristRemark" placeholder="请输入第一台梯控备注" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">第二台梯控备注</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="ladderControlSecondRemark" placeholder="请输入第二台梯控备注" >
+            </div>
+        </div>
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

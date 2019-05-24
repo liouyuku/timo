@@ -31,11 +31,6 @@
         </dependency>
         <dependency>
             <groupId>com.linln.component</groupId>
-            <artifactId>tcpserver</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.linln.component</groupId>
             <artifactId>jwt</artifactId>
             <version>${project.version}</version>
         </dependency>
