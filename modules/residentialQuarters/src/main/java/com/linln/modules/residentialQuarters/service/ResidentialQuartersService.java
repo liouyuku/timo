@@ -21,8 +21,6 @@ public interface ResidentialQuartersService {
 	/**
 	 * 通过小区的名称和status查询小区的数据
 	 * 
-	 * @param rName
-	 * @param status
 	 * @return
 	 */
 	Optional<ResidentialQuarters> selectResidentialQuartersByrNameAndStauts(Example<ResidentialQuarters> example);

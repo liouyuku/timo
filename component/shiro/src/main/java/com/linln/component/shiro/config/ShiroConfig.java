@@ -59,6 +59,15 @@ public class ShiroConfig {
         filterMap.put("/favicon.ico", "anon");
         filterMap.put("/**", "userAuth");
 
+        filterMap.put("/swagger-ui.html", "anon");
+        filterMap.put("/swagger-resources", "anon");
+        filterMap.put("/v2/api-docs", "anon");
+        filterMap.put("/v2/api-docs-ext", "anon");
+        filterMap.put("/doc.html", "anon");
+        filterMap.put("/webjars/**", "anon");
+
+
+
         // 设置过滤规则
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         // 设置登录页面

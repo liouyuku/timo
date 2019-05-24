@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="timo-detail-page">
+        <div class="timo-detail-title">基本信息</div>
+        <table class="layui-table timo-detail-table">
+            <colgroup>
+                <col width="100px"><col>
+                <col width="100px"><col>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th>主键ID</th>
+                    <td th:text="${notice.id}"></td>
+                    <th>标题</th>
+                    <td th:text="${notice.title}"></td>
+                </tr>
+                <tr>
+                    <th>内容</th>
+                    <td th:text="${notice.content}"></td>
+                    <th>作者</th>
+                    <td th:text="${notice.author}"></td>
+                </tr>
+                <tr>
+                    <th>结束时间</th>
+                    <td th:text="${notice.endDate}"></td>
+                    <th>持续时间</th>
+                    <td th:text="${notice.durationDate}"></td>
+                </tr>
+                <tr>
+                    <th>绑定类型</th>
+                    <td th:text="${notice.buildType}"></td>
+                    <th>关联数据</th>
+                    <td th:text="${notice.relationId}"></td>
+                </tr>
+                <tr>
+                    <th>是否置顶</th>
+                    <td th:text="${notice.isTop}"></td>
+                    <th>创建时间</th>
+                    <td th:text="${#dates.format(notice.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

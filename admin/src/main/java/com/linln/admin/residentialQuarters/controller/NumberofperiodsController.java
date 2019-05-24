@@ -39,6 +39,8 @@ public class NumberofperiodsController {
     private NumberofperiodsService numberofperiodsService;
     @Autowired
     private NumberofperiodsRepository numberofperiodsRepository;
+	//@Autowired
+	//private NumberofperiodsService numberofperiodsService;
 
     /**
      * ajax请求查询（根据小区的id查询小区下面的期数）

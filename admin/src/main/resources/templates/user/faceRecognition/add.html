@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="layui-form timo-compile">
+    <form th:action="@{/user/faceRecognition/add}">
+        <input type="hidden" name="id" th:if="${faceRecognition}" th:value="${faceRecognition.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话号码</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="mobile" placeholder="请输入电话号码" th:value="${faceRecognition?.mobile}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="tag" placeholder="请输入备注" th:value="${faceRecognition?.tag}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">人脸特征库</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="data" placeholder="请输入人脸特征库" th:value="${faceRecognition?.data}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">栋数id</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="numberOfBuildingsId" placeholder="请输入栋数id" th:value="${faceRecognition?.numberOfBuildingsId}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">设备类型</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="equipmentType" placeholder="请输入设备类型" th:value="${faceRecognition?.equipmentType}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否审核</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="isChecked" placeholder="请输入是否审核" th:value="${faceRecognition?.isChecked}">
+            </div>
+        </div>
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

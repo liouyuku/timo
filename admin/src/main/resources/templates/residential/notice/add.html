@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="layui-form timo-compile">
+    <form th:action="@{/residential/notice/add}">
+        <input type="hidden" name="id" th:if="${notice}" th:value="${notice.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="title" placeholder="请输入标题" th:value="${notice?.title}">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">内容</label>
+            <div class="layui-input-inline">
+                <textarea class="layui-textarea" type="text" name="content" placeholder="请输入内容" th:value="${notice?.content}"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">结束时间</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="endDate" id="endDate" placeholder="请输入结束时间" th:value="${notice?.endDate}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">持续时间</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="durationDate" placeholder="请输入持续时间" th:value="${notice?.durationDate}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">发布位置</label>
+            <div class="layui-input-inline">
+                <select name="buildType" lay-verify="required" lay-filter="buildType">
+                    <option value="">-----请选择-----</option>
+                    <option  value="1">所有人</option>
+                    <option  value="2">固定的人</option>
+                    <option  value="3">小区</option>
+                    <option  value="4">期数</option>
+                    <option  value="5">栋数</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" style="display: none" id="residentialQuarters">
+        <label class="layui-form-label">小区</label>
+        <div class="layui-input-inline">
+            <select name="residentialQuartersId" lay-verify="required" lay-filter="residentialQuarters">
+                <option value="">-----请选择-----</option>
+                <option  th:each="list:${residentialQuartersList}" th:value="${list.getId()}"
+                         th:text="${list.getName()}" ></option>
+            </select>
+        </div>
+    </div>
+        <div class="layui-form-item" style="display: none" id="numberOfPeriodsId">
+            <label class="layui-form-label">期数</label>
+            <div class="layui-input-inline">
+                <select name="numberOfPeriodsId" lay-verify="required" lay-filter="numberOfPeriods" id="numberOfPeriods">
+
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" style="display: none" id="numberOfBuildingsId">
+            <label class="layui-form-label">栋数</label>
+            <div class="layui-input-inline">
+                <select name="numberOfBuildingsId" lay-verify="required" lay-filter="numberOfBuildings" id="numberOfBuildings">
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" style="display: none" id="user">
+            <label class="layui-form-label">用户</label>
+            <div class="layui-input-inline">
+                <select name="userId" lay-verify="required" lay-filter="userId">
+                    <option value="">-----请选择-----</option>
+                    <option  th:each="list:${userList}" th:value="${list.getId()}" th:text="${list.getUserName()}" ></option>
+                </select> </div>
+        </div>
+
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+
+    <script>
+        layui.use(['jquery','laydate','form'], function(){
+            var laydate = layui.laydate;
+            var $ = layui.jquery;
+            var layer = layui.layer;
+            var form=layui.form;
+            //点击发布位置激发的函数
+            form.on("select(buildType)", function (data) {
+                //发布位置为所有人（隐藏小区，期数，栋数下拉列表）
+                //发布位置为个人（隐藏小区，期数，栋数下拉列表）
+                //发布位置为小区（隐藏期数，栋数）
+                //发布位置为期数（隐藏栋数）
+                //发布位置为栋数（显示小区，期数）
+                if(data.value==1){
+                    $("#residentialQuarters").hidden();
+                    $("#numberOfPeriodsId").hidden();
+                    $("#numberOfBuildingsId").hidden();
+                    $("#user").hidden()
+
+                }else if(data.value==2){
+                    $("#user").show()
+                    $("#residentialQuarters").hide();
+                    $("#numberOfPeriodsId").hide();
+                    $("#numberOfBuildingsId").hide()
+
+                }else if(data.value==3){
+                    $("#residentialQuarters").show();
+                    $("#numberOfPeriodsId").hide();
+                    $("#numberOfBuildingsId").hide();
+                    $("#user").hide()
+
+                }else if(data.value==4){
+                    $("#residentialQuarters").show();
+                    $("#numberOfPeriodsId").show();
+                    $("#numberOfBuildingsId").hide();
+                    $("#user").hide()
+                }else if(data.value==5){
+                    $("#residentialQuarters").show();
+                    $("#numberOfPeriodsId").show();
+                    $("#numberOfBuildingsId").show()
+                    $("#user").hide()
+                }
+
+            });
+
+            //点击期数下拉列表激发
+            form.on("select(numberOfPeriods)", function (data) {
+                //将栋数的下拉列表清空
+                $("select[name='numberOfBuildingsId']").empty();
+                //发送ajax请求查询该期数下面的栋数
+                $.ajax({
+                    type: "get",
+                    url: "/residential/numberOfBuildings/getDataNumberOfBuildings?numberOfPeriodsId=" + data.value,
+
+                    success: function (callBackData) {
+                        if (callBackData.code = 200) {
+
+                            $("select[name='numberOfBuildingsId']").empty();
+
+                            var optionstring = "";
+
+                            $.each(callBackData.data, function (i, item) {
+
+                                optionstring += "<option value=\"" + item.id + "\" >" + item.name + "</option>";
+                            });
+                            $("#numberOfBuildings").html(optionstring);
+                            form.render('select');
+
+                        } else {
+                            layer.msg("失败")
+                        }
+                    },
+                    error: function () {
+                        layer.msg("程序内部错误")
+                    }
+
+                });
+                return false;
+            });
+            //点击小区下拉列表
+            form.on("select(residentialQuarters)", function (data) {
+                //将期数的下拉列表清空
+                $("select[name='numberOfPeriodsId']").empty();
+                //讲栋数的下拉列表清空
+                $("select[name='numberOfBuildingsId']").empty();
+                //发送ajax请求查询该小区下面的期数
+                $.ajax({
+                    type: "get",
+                    url: "/residentialQuarters/numberofperiods/getNumberOfPeriods?rId=" + data.value,
+
+                    success: function (callBackData) {
+                        if (callBackData.code = 200) {
+
+
+                            var optionstring = "";
+
+                            $.each(callBackData.data, function (i, item) {
+
+                                optionstring += "<option value=\"" + item.id + "\" >" + item.name + "</option>";
+                            });
+                            $("#numberOfPeriods").html(optionstring);
+                            form.render('select');
+
+                        } else {
+                            layer.msg("失败")
+                        }
+                    },
+                    error: function () {
+                        layer.msg("程序内部错误")
+                    }
+
+                });
+                return false;
+            });
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#endDate' //指定元素
+            });
+        });
+    </script>
+</body>
+</html>

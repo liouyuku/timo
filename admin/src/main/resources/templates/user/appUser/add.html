@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+<div class="layui-form timo-compile">
+    <form th:action="@{/user/appUser/add}">
+        <input type="hidden" name="id" th:if="${appUser}" th:value="${appUser.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="name" placeholder="请输入姓名">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="userName" placeholder="请输入用户名"
+                >
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话号码</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="mobilePhone" placeholder="请输入电话号码"
+                       >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备用电话</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="standbyTelephone" placeholder="请输入备用电话"
+                >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">门禁卡的序列号</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="serialNumber" placeholder="请输入门禁卡的序列号"
+                >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">门禁卡类型</label>
+            <div class="layui-input-inline">
+                <select name="cardType" lay-verify="required">
+
+                    <option th:text="IC卡" th:value="1"></option>
+                    <option th:text="ID卡" th:value="2"></option>
+                    <option th:text="身份证" th:value="3"></option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">结束时间</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="endDate" id="endDate" placeholder="请输入结束时间"
+                >
+            </div>
+        </div>
+        <div class="layui-form-item"  id="residentialQuarters">
+            <label class="layui-form-label">小区</label>
+            <div class="layui-input-inline">
+                <select name="residentialQuartersId" lay-verify="required" lay-filter="residentialQuarters">
+                    <option value="">-----请选择-----</option>
+                    <option th:each="list:${residentialQuartersList}" th:value="${list.getId()}"
+                            th:text="${list.getName()}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item"  id="numberOfPeriodsId">
+            <label class="layui-form-label">期数</label>
+            <div class="layui-input-inline">
+                <select name="numberOfPeriodsId" lay-verify="required" lay-filter="numberOfPeriods"
+                        id="numberOfPeriods">
+
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item"  id="numberOfBuildingsId">
+            <label class="layui-form-label">栋数</label>
+            <div class="layui-input-inline">
+                <select name="numberOfBuildingsId" lay-verify="required" lay-filter="numberOfBuildings"
+                        id="numberOfBuildings">
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">房间号</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="roomNumber" placeholder="请输入房间号"
+                >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户类型</label>
+            <div class="layui-input-inline">
+                <select name="userType" lay-verify="required">
+
+                    <option th:text="业主" th:value="1"></option>
+                    <option th:text="租客" th:value="2"></option>
+                    <option th:text="家属" th:value="3"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+<script>
+    layui.use(['jquery', 'laydate', 'form'], function () {
+        var laydate = layui.laydate;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+
+
+        //点击期数下拉列表激发
+        form.on("select(numberOfPeriods)", function (data) {
+            //将栋数的下拉列表清空
+            $("select[name='numberOfBuildingsId']").empty();
+            //发送ajax请求查询该期数下面的栋数
+            $.ajax({
+                type: "get",
+                url: "/residential/numberOfBuildings/getDataNumberOfBuildings?numberOfPeriodsId=" + data.value,
+
+                success: function (callBackData) {
+                    if (callBackData.code = 200) {
+
+                        $("select[name='numberOfBuildingsId']").empty();
+
+                        var optionstring = "";
+
+                        $.each(callBackData.data, function (i, item) {
+
+                            optionstring += "<option value=\"" + item.id + "\" >" + item.name + "</option>";
+                        });
+                        $("#numberOfBuildings").html(optionstring);
+                        form.render('select');
+
+                    } else {
+                        layer.msg("失败")
+                    }
+                },
+                error: function () {
+                    layer.msg("程序内部错误")
+                }
+
+            });
+            return false;
+        });
+        //点击小区下拉列表
+        form.on("select(residentialQuarters)", function (data) {
+            //将期数的下拉列表清空
+            $("select[name='numberOfPeriodsId']").empty();
+            //讲栋数的下拉列表清空
+            $("select[name='numberOfBuildingsId']").empty();
+            //发送ajax请求查询该小区下面的期数
+            $.ajax({
+                type: "get",
+                url: "/residentialQuarters/numberofperiods/getNumberOfPeriods?rId=" + data.value,
+
+                success: function (callBackData) {
+                    if (callBackData.code = 200) {
+
+
+                        var optionstring = "";
+
+                        $.each(callBackData.data, function (i, item) {
+
+                            optionstring += "<option value=\"" + item.id + "\" >" + item.name + "</option>";
+                        });
+                        $("#numberOfPeriods").html(optionstring);
+                        form.render('select');
+
+                    } else {
+                        layer.msg("失败")
+                    }
+                },
+                error: function () {
+                    layer.msg("程序内部错误")
+                }
+
+            });
+            return false;
+        });
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#endDate' //指定元素
+        });
+    });
+</script>
+</body>
+</html>

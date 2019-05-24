@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="layui-form timo-compile">
+    <form th:action="@{/Equipment/lowerEquipment/add}">
+        <input type="hidden" name="id" th:if="${lowerEquipment}" th:value="${lowerEquipment.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">设备mac</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="mac" placeholder="请输入设备mac" th:value="${lowerEquipment?.mac}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">设备版本号</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="version" placeholder="请输入设备版本号" th:value="${lowerEquipment?.version}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">设备名称</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="name" placeholder="请输入设备名称" th:value="${lowerEquipment?.name}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">栋数id</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="numberOfBuildingsId" placeholder="请输入栋数id" th:value="${lowerEquipment?.numberOfBuildingsId}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">绑定类型</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="bulidType" placeholder="请输入绑定类型" th:value="${lowerEquipment?.bulidType}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">设备sn码</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="sn" placeholder="请输入设备sn码" th:value="${lowerEquipment?.sn}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否是测试机</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="isTest" placeholder="请输入是否是测试机" th:value="${lowerEquipment?.isTest}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否为广告机</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="isAdvertising" placeholder="请输入是否为广告机" th:value="${lowerEquipment?.isAdvertising}">
+            </div>
+        </div>
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

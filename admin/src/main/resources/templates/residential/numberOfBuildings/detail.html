@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="timo-detail-page">
+        <div class="timo-detail-title">基本信息</div>
+        <table class="layui-table timo-detail-table">
+            <colgroup>
+                <col width="100px"><col>
+                <col width="100px"><col>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th>主键ID</th>
+                    <td th:text="${numberOfBuildings.id}"></td>
+                    <th>栋数名称</th>
+                    <td th:text="${numberOfBuildings.name}"></td>
+                </tr>
+                <tr>
+                    <th>栋数编号</th>
+                    <td th:text="${numberOfBuildings.numberOfBuildingsNumber}"></td>
+                    <th>期数id</th>
+                    <td th:text="${numberOfBuildings.numberOfPeriodsId}"></td>
+                </tr>
+                <tr>
+                    <th>第一台梯控mac</th>
+                    <td th:text="${numberOfBuildings.ladderControlFristMac}"></td>
+                    <th>第二台梯控mac</th>
+                    <td th:text="${numberOfBuildings.ladderControlSecondMac}"></td>
+                </tr>
+                <tr>
+                    <th>第一台梯控备注</th>
+                    <td th:text="${numberOfBuildings.ladderControlFristRemark}"></td>
+                    <th>第二台梯控备注</th>
+                    <td th:text="${numberOfBuildings.ladderControlSecondRemark}"></td>
+                </tr>
+                <tr>
+                    <th>创建时间</th>
+                    <td th:text="${#dates.format(numberOfBuildings.createDate, 'yyyy-MM-dd HH:mm:ss')}" colspan="3"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

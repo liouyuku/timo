@@ -7,11 +7,32 @@
     <packaging>jar</packaging>
     <name>接口模块</name>
 
+    <properties>
+        <swagger.version>2.9.2</swagger.version>
+    </properties>
+
     <parent>
         <groupId>com.linln</groupId>
         <artifactId>timo</artifactId>
         <version>2.0.1</version>
     </parent>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArguments>
+                        <extdirs>src\main\lib</extdirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -35,16 +56,42 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!--推送RESTAPI -->
+        <dependency>
+            <groupId>cn.jpush.api</groupId>
+            <artifactId>jpush-client</artifactId>
+            <version>3.3.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+
+        <!--业务模块 -->
+        <dependency>
+            <groupId>com.linln.modules</groupId>
+            <artifactId>residentialQuarters</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!--swagger2接口文档-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
+            <version>${swagger.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.9.3</version>
         </dependency>
     </dependencies>
 
