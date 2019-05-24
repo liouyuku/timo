@@ -42,7 +42,7 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("TIMO系统数据接口")
-				.description("Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化RESTful风格的Web服务。").version("v2.0").build();
+		return new ApiInfoBuilder().title("xyd系统数据接口")
+				.description("服务接口描述").version("v1.0").build();
 	}
 }

@@ -21,7 +21,6 @@ public class SwaggerController {
     
     
     @GetMapping("/api/test")
-    @JwtPermissions
     public String test(){
     	System.out.println("执行咯test");
         return "redirect:/swagger-ui.html";

@@ -1,0 +1,9 @@
+##
+xyd:
+  android: andorid.json
+  ios: ios.json
+  device: device.json
+  ##雲通訊相關賬號
+  ccp_sid: aaf98f8953cadc690153cf8ebbe22ec6
+  ccp_token: aaf98f8953cadc690153e5b748654ea9
+  ccp_appId: aaf98f8953cadc690153e5b748654ea9c

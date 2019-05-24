@@ -13,6 +13,10 @@ project:
     #file-path:                               #文件上传路径，默认在项目根目录upload下
     static-path: /upload/**                   #上传文件静态访问路径
 
+logging:
+  level:
+    root: info
+    org.springframework: debug
 ### spring配置
 spring:
   datasource:
@@ -72,7 +76,10 @@ spring:
       hibernate.dialect: com.linln.common.mysql.MySQLDialectUTF8
       hibernate.format_sql: false
     open-in-view: true
-
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.linln.modules.mybatis
   ## thymeleaf模板设置
   thymeleaf:
     prefix: classpath:/templates
