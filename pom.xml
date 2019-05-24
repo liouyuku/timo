@@ -16,7 +16,7 @@
         <module>component</module>
         <module>devtools</module>
         <module>modules</module>
-        <module>api</module>
+       <!-- <module>api</module>-->
     </modules>
 
     <parent>

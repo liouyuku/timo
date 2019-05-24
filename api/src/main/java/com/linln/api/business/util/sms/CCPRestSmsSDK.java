@@ -26,7 +26,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+<<<<<<< HEAD
 import java.util.*;
+=======
+>>>>>>> short
 
 public class CCPRestSmsSDK {
     private static final int Request_Get = 0;

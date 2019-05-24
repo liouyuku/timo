@@ -7,7 +7,10 @@ import com.linln.api.business.frombean.request.DeviceHanUpRequest;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.*;
+=======
+>>>>>>> short
 
 
 @RestController(value = "device_calling")

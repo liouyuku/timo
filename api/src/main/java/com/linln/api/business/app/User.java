@@ -8,7 +8,10 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.*;
+=======
+>>>>>>> short
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -4,7 +4,10 @@ package com.linln.api.business.device;
 import com.linln.api.business.frombean.base.Response;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.*;
+=======
+>>>>>>> short
 
 /***
  * 设备通告c

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="timo-detail-page">
+        <div class="timo-detail-title">基本信息</div>
+        <table class="layui-table timo-detail-table">
+            <colgroup>
+                <col width="100px"><col>
+                <col width="100px"><col>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th>主键ID</th>
+                    <td th:text="${faceRecognition.id}"></td>
+                    <th>电话号码</th>
+                    <td th:text="${faceRecognition.mobile}"></td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td th:text="${faceRecognition.tag}"></td>
+                    <th>人脸特征库</th>
+                    <td th:text="${faceRecognition.data}"></td>
+                </tr>
+                <tr>
+                    <th>栋数id</th>
+                    <td th:text="${faceRecognition.numberOfBuildingsId}"></td>
+                    <th>设备类型</th>
+                    <td th:text="${faceRecognition.equipmentType}"></td>
+                </tr>
+                <tr>
+                    <th>是否审核</th>
+                    <td th:text="${faceRecognition.isChecked}"></td>
+                    <th>创建时间</th>
+                    <td th:text="${#dates.format(faceRecognition.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

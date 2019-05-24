@@ -8,7 +8,10 @@ import com.linln.api.business.frombean.response.VersionResponse;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.*;
+=======
+>>>>>>> short
 
 import java.io.File;
 import java.nio.charset.Charset;

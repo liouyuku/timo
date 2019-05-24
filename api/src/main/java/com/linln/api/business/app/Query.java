@@ -7,7 +7,10 @@ import com.linln.modules.residentialQuarters.service.ResidentialQuartersService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.*;
+=======
+>>>>>>> short
 
 /**
  * 查詢基礎數據/小區/期數/棟數/小區電話
