@@ -1,6 +1,7 @@
 package com.linln.common.enums;
 
 import com.linln.common.constant.StatusConst;
+import lombok.Data;
 import lombok.Getter;
 
 /**
@@ -23,5 +24,6 @@ public enum StatusEnum {
         this.code = code;
         this.message = message;
     }
+
 }
 

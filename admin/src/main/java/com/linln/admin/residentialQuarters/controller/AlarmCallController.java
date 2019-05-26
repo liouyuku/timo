@@ -62,6 +62,7 @@ public class AlarmCallController {
      */
     @GetMapping("/add")
     @RequiresPermissions("residential:alarmCall:add")
+
     public String toAdd(Model model) {
         //查询所有小区的信息
         List<ResidentialQuarters> dataAllResidentialQuarters = residentialQuartersService.getDataAllResidentialQuarters();
@@ -85,7 +86,7 @@ public class AlarmCallController {
 
         model.addAttribute("alarmCall", alarmCall);
 
-        return "/residential/alarmCall/add";
+        return "/residential/alarmCall/edit";
     }
 
     /**

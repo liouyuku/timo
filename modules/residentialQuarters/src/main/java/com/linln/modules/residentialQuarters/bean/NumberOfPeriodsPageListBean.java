@@ -30,6 +30,7 @@ public class NumberOfPeriodsPageListBean {
 	private Timestamp createDate;
 	// 数据状态（1表示正常，2表示冻结，3表示删除）
 	private Byte status = StatusEnum.OK.getCode();
+
 	/**
 	 *  小区id
 	 */

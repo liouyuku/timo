@@ -20,12 +20,12 @@
 </head>
 <body>
 <div class="layui-form timo-compile">
-    <form th:action="@{/system/user/role}">
-        <input type="hidden" name="id" th:value="${id}"/>
+    <form th:action="@{/system/user/bindresidentialQuarters}">
+        <input type="hidden" name="sysUserId" th:value="${id}"/>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <input th:each="item:${list}" type="checkbox" name="roleId" th:title="${item.title}"
-                       th:value="${item.id}" th:checked="${#sets.contains(authRoles, item)}" lay-skin="primary">
+                <input th:each="item:${allResidentialQuarters}" type="checkbox" name="residentialQuartersId" th:title="${item.name}"
+                       th:value="${item.id}" th:checked="${sysUserResidentialQuarters.contains(item.id)}" lay-skin="primary">
             </div>
         </div>
         <div class="layui-form-item timo-finally">

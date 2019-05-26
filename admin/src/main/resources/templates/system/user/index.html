@@ -46,13 +46,15 @@
                 </div>
                 <div class="pull-right screen-btn-group">
                     <div class="btn-group-left">
-                        <button class="layui-btn open-popup-param" data-title="修改密码" th:attr="data-url=@{/system/appUser/pwd}"  data-size="456,242">
+                        <button class="layui-btn open-popup-param" data-title="修改密码" th:attr="data-url=@{/system/user/pwd}"  data-size="456,242">
                             <i class="fa fa-refresh"></i> 修改密码</button>
-                        <button class="layui-btn open-popup-param" data-type="radio" data-title="角色分配" th:attr="data-url=@{/system/appUser/role}" data-size="480,400">
-                            <i class="fa fa-appUser-secret"></i> 角色分配</button>
+                        <button class="layui-btn open-popup-param" data-type="radio" data-title="角色分配" th:attr="data-url=@{/system/user/role}" data-size="480,400">
+                            <i class="fa fa-user-secret"></i> 角色分配</button>
+                        <button class="layui-btn open-popup-param" data-type="radio" data-title="小区分配" th:attr="data-url=@{/system/user/residentialQuarters}" data-size="480,400">
+                            <i class="fa fa-user-secret"></i> 小区分配</button>
                     </div>
                     <div class="btn-group-right">
-                        <button class="layui-btn open-popup" data-title="添加用户" th:attr="data-url=@{/system/appUser/add}"  data-size="auto">
+                        <button class="layui-btn open-popup" data-title="添加用户" th:attr="data-url=@{/system/user/add}"  data-size="auto">
                             <i class="fa fa-plus"></i> 添加</button>
                         <div class="btn-group">
                             <button class="layui-btn">操作<span class="caret"></span></button>
@@ -97,9 +99,9 @@
                         <td th:text="${#dates.format(item.createDate, 'yyyy-MM-dd HH:mm:ss')}">创建时间</td>
                         <td th:text="${#dicts.dataStatus(item.status)}">状态</td>
                         <td>
-                            <a class="open-popup" data-title="编辑用户" th:attr="data-url=@{'/system/appUser/edit/'+${item.id}}"  data-size="600,570" href="#">编辑</a>
-                            <a class="open-popup" data-title="详细信息" th:attr="data-url=@{'/system/appUser/detail/'+${item.id}}"  data-size="800,600" href="#">详细</a>
-                            <a class="ajax-get" th:attr="data-msg='您是否删除'+${item.nickname}" th:href="@{/system/appUser/status/delete(ids=${item.id})}">删除</a>
+                            <a class="open-popup" data-title="编辑用户" th:attr="data-url=@{'/system/user/edit/'+${item.id}}"  data-size="600,570" href="#">编辑</a>
+                            <a class="open-popup" data-title="详细信息" th:attr="data-url=@{'/system/user/detail/'+${item.id}}"  data-size="800,600" href="#">详细</a>
+                            <a class="ajax-get" th:attr="data-msg='您是否删除'+${item.nickname}" th:href="@{/system/user/status/delete(ids=${item.id})}">删除</a>
                         </td>
                     </tr>
                     </tbody>

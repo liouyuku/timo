@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="layui-form timo-compile">
-    <form th:action="@{/system/appUser/save}">
+    <form th:action="@{/system/user/save}">
         <input type="hidden" name="id" th:if="${appUser}" th:value="${appUser.id}"/>
         <div class="layui-form-item">
             <label class="layui-form-label required">用户名</label>
@@ -32,13 +32,13 @@
                 <input class="layui-input" type="password" name="confirm" placeholder="再一次输入密码">
             </div>
         </div>
-        <div class="layui-form-item">
+        <!--<div class="layui-form-item">
             <label class="layui-form-label required">所在部门</label>
             <div class="layui-input-inline">
                 <input class="layui-input select-tree" th:attr="data-url=@{/system/dept/list}, data-value=${appUser?.dept?.id}"
                        type="text" name="dept"  placeholder="请选择所在部门" th:value="${appUser?.dept?.title}">
             </div>
-        </div>
+        </div>-->
         <div class="layui-form-item">
             <label class="layui-form-label">电话号码</label>
             <div class="layui-input-inline">

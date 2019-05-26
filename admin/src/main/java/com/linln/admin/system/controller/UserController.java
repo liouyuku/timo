@@ -1,5 +1,6 @@
 package com.linln.admin.system.controller;
 
+import cn.hutool.core.date.DateUtil;
 import com.linln.admin.system.validator.UserValid;
 import com.linln.common.constant.AdminConst;
 import com.linln.common.enums.ResultEnum;
@@ -17,12 +18,18 @@ import com.linln.component.actionLog.annotation.EntityParam;
 import com.linln.component.excel.ExcelUtil;
 import com.linln.component.fileUpload.config.properties.UploadProjectProperties;
 import com.linln.component.shiro.ShiroUtil;
+import com.linln.modules.residentialQuarters.domain.ResidentialQuarters;
+import com.linln.modules.residentialQuarters.service.ResidentialQuartersService;
 import com.linln.modules.system.domain.Role;
+import com.linln.modules.system.domain.SysUserResidentialQuarters;
 import com.linln.modules.system.domain.User;
 import com.linln.modules.system.repository.UserRepository;
 import com.linln.modules.system.service.RoleService;
+import com.linln.modules.system.service.SysUserResidentialQuartersService;
 import com.linln.modules.system.service.UserService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -39,9 +46,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author 小懒虫
@@ -50,13 +55,65 @@ import java.util.Set;
 @Controller
 @RequestMapping("/system/user")
 public class UserController {
+    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
 
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private ResidentialQuartersService residentialQuartersService;
+    @Autowired
+    private SysUserResidentialQuartersService sysUserResidentialQuartersService;
+    /**
+     * 小区分配业务
+     */
+    @PostMapping("/bindresidentialQuarters")
+    @ResponseBody
+    @ActionLog(key = UserAction.BIND_RESIDENTIALQUARTERS, action = UserAction.class)
+    public ResultVo bindresidentialQuarters(
+            @RequestParam(value = "sysUserId", required = true) Long sysUserId,@RequestParam(value = "residentialQuartersId", required = false) HashSet<Long> residentialQuartersId
+           ) {
+        //如果是超级管理员不用操作管理小区
+        if(sysUserId.equals(AdminConst.ADMIN_ID)){
+            return  ResultVoUtil.error("超级管理员不用绑定小区");
+        }
 
+        // 不允许操作超级管理员数据
+        if (sysUserId.equals(AdminConst.ADMIN_ID) &&
+                !ShiroUtil.getSubject().getId().equals(AdminConst.ADMIN_ID)) {
+            throw new ResultException(ResultEnum.NO_ADMIN_AUTH);
+        }
+        try {
+
+            //绑定业务
+            sysUserResidentialQuartersService.bindresidentialQuarters(sysUserId,residentialQuartersId);
+        }catch (Exception e){
+            e.printStackTrace();
+            LOG.error("{}",e.getMessage());
+            return ResultVoUtil.error("绑定失败");
+        }
+
+        return ResultVoUtil.SAVE_SUCCESS;
+    }
+
+    /**
+     * 跳转到小区分配的页面
+     */
+    @GetMapping("/residentialQuarters")
+    public String toBindresidentialQuarters(@RequestParam(value = "ids") User user, Model model) {
+        //查询全部的小区
+        List<ResidentialQuarters> dataAllResidentialQuarters = residentialQuartersService.getDataAllResidentialQuarters();
+        //通过用户id查询对应的小区
+        List<Long> sysUserResidentialQuarters = sysUserResidentialQuartersService.getByUid(user.getId());
+        model.addAttribute("allResidentialQuarters",dataAllResidentialQuarters);
+        model.addAttribute("sysUserResidentialQuarters",sysUserResidentialQuarters);
+        model.addAttribute("id", user.getId());
+
+
+        return "/system/user/bindresidentialQuarters";
+    }
     /**
      * 列表页面
      */

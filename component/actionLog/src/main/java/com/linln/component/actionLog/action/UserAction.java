@@ -25,6 +25,7 @@ public class UserAction extends ActionMap {
     public static final String USER_SAVE = "user_save";
     public static final String EDIT_PWD = "edit_pwd";
     public static final String EDIT_ROLE = "edit_role";
+    public static final String BIND_RESIDENTIALQUARTERS = "bind_residentialquarters";
 
     @Override
     public void init() {
@@ -36,6 +37,18 @@ public class UserAction extends ActionMap {
         putMethod(EDIT_PWD, new BusinessMethod("用户密码","editPwd"));
         // 角色分配行为
         putMethod(EDIT_ROLE, new BusinessMethod("角色分配","editRole"));
+        //用户绑定小区行为
+        putMethod(BIND_RESIDENTIALQUARTERS,new BusinessMethod("用户绑定小区","bindResidentialQuarters"));
+    }
+    //用户绑定小区的方法
+    public void bindResidentialQuarters(ResetLog resetLog){
+        ActionLog actionLog = resetLog.getActionLog();
+        if (resetLog.isSuccess()){
+            actionLog.setMessage("用户绑定小区成功");
+        }else {
+
+            actionLog.setMessage("用户绑定小区失败");
+        }
     }
 
     // 用户登录行为方法

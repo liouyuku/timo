@@ -3,15 +3,21 @@
 <head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
 </head>
 <body>
-    <div class="layui-form timo-compile">
+<div class="layui-form timo-compile">
     <form th:action="@{/residential/alarmCall/add}">
-
+        <input type="hidden" name="id" th:if="${alarmCall}" th:value="${alarmCall.id}">
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">小区名称</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="residentialQuartersId" placeholder="请输入小区id" th:value="${alarmCall?.residentialQuartersId}">
+            </div>
+        </div>-->
         <div class="layui-form-item">
             <label class="layui-form-label">小区名称</label>
             <div class="layui-form-label">
                 <select name="residentialQuartersId" lay-verify="required">
                     <option value="">所有</option>
-                    <option  th:each="r,rStat:${rList}" th:value="${r.id}" th:text="${r.name}" ></option>
+                    <option  th:each="r,rStat:${rList}" th:value="${r.id}" th:text="${r.name}" th:selected="${r.id==alarmCall.id}" ></option>
 
                 </select>
             </div>
